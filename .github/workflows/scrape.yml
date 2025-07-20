@@ -1,0 +1,25 @@
+name: Scrape and Sum Tables
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  run-scraper:
+    name: Sum Tables - 23f3001416@ds.study.iitm.ac.in
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run scraper
+        run: node scrape_sum.js
